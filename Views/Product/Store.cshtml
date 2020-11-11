@@ -1,0 +1,83 @@
+@model ReflectionIT.Mvc.Paging.PagingList<Product>
+@addTagHelper *, ReflectionIT.Mvc.Paging
+<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+                     <div id="store" class="col-md-12">
+						<!-- store top filter -->
+						<div class="store-filter clearfix">
+							<div class="store-sort">
+								<label>
+									Sort By:
+									<select class="input-select">
+										<option value="0">Popular</option>
+										<option value="1">Position</option>
+									</select>
+								</label>
+
+								<label>
+									Show:
+									<select class="input-select">
+										<option value="0">20</option>
+										<option value="1">50</option>
+									</select>
+								</label>
+							</div>
+							<ul class="store-grid">
+								<li class="active"><i class="fa fa-th"></i></li>
+								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
+							</ul>
+						</div>
+						<!-- /store top filter -->
+
+						<!-- store products -->
+						<div class="row">
+							<!-- product -->
+                            @foreach (var x in Model)
+                            {
+
+
+							<div class="col-md-4 col-xs-6">
+								<div class="product">
+									<div class="product-img">
+										<img src="/products/@x.Images.Split(';')[1]" alt="">
+										<div class="product-label">
+
+											<span class="new">NEW</span>
+										</div>
+									</div>
+									<div class="product-body">
+										<p class="product-category">@x.Category</p>
+										<h3 class="product-name"><a asp-action="Details" asp-controller="Product" asp-route-id="@x.Id">@x.Name</a></h3>
+										<h4 class="product-price">$ @x.Price <del class="product-old-price"></del></h4>
+												<div class="product-rating">
+													 @for(int i=1;i<=@x.Rating;i++)
+                                {
+                                        <i class="fa fa-star"></i>
+                             }
+												</div>
+
+									</div>
+									
+								</div>
+							</div>
+                            }
+							<!-- /product -->
+						</div>
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+
+
+						<!-- /store bottom filter -->
+					</div>
+				</div>
+                <div>
+            <nav aria-label="Suppliers navigation example">
+                <vc:pager paging-list="@Model" />
+            </nav>
+                       </div>
+			</div>
+</div>

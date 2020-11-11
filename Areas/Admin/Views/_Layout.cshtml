@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Computersastopasal - Ecommerce</title>
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="/lib/css/newproduct.css">
+
+
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="/electro/css/bootstrap.min.css"/>
+
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="/electro/css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="/electro/css/slick-theme.css"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="/electro/css/nouislider.min.css"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="/electro/css/font-awesome.min.css">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="/electro/css/style.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    </head>
+	<body>
+		 @await Component.InvokeAsync("NToastNotify")
+
+		<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<div class="col-md-3">
+							<div class="header-logo">
+								<a asp-action="Index" class="logo">
+									<p style="color: white; font-size:20px"> ComputerSastoPasal </p>
+								</a>
+							</div>
+						</div>
+
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-user-o"></i> Admin Area</a></li>
+						<form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <li>    <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button> </li>
+
+
+						</form>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+						<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+					<!-- NAV -->
+					<ul class="main-nav nav navbar-nav">
+						<li class="@TempData["isactive1"]"><a asp-action="Index" asp-controller="Product" asp-area="Admin">Products</a></li>
+						<li class="@TempData["isactive3"]"><a  asp-action="New" asp-controller="Product" asp-area="Admin">New Product</a></li>
+
+					</ul>
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
+
+		<!-- SECTION -->
+
+
+       @RenderBody()
+
+
+        <footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+			</div>
+
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script src="/electro/js/jquery.min.js"></script>
+		<script src="/electro/js/bootstrap.min.js"></script>
+		<script src="/electro/js/slick.min.js"></script>
+		<script src="/electro/js/nouislider.min.js"></script>
+		<script src="/electro/js/jquery.zoom.min.js"></script>
+		<script src="/electro/js/main.js"></script>
+		@RenderSection("Scripts", required: false)
+
+	</body>
+</html>

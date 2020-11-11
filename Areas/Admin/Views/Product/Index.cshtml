@@ -1,0 +1,72 @@
+@model ReflectionIT.Mvc.Paging.PagingList<Product>
+  <link rel="stylesheet" href="/lib/css/newproduct.css">
+
+@addTagHelper *, ReflectionIT.Mvc.Paging
+<div class="section">
+    <div class="container">
+ <form asp-action="Index" method="GET">
+    <div class="input-group">
+        @if( ViewData["search"] !=null)
+        {
+
+      <input type="text" name="search" class="form-control" placeholder="Search for...">
+        }
+        else
+        {
+      <input type="text" name="search" value="@ViewData["search"]" class="form-control" placeholder="Search for...">
+
+        }
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Search!</button>
+      </span>
+     </div><!-- /input-group -->
+
+        </form>
+
+      <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Products</div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+        <th> SN. </th>
+        <th> Name </th>
+        <th> Category</th>
+        <th> Stock</th>
+        <th> Price</th>
+        <th colspan="2">Actions</th>
+    </thead>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var item in Model)
+        {
+
+
+
+        <tr>
+            <td> @i </td>
+            <td> @item.Name </td>
+            <td>@item.Category </td>
+            <td> @item.InStock</td>
+            <td> @item.Price</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"> <i class="fa fa-pencil"></i> </a> </td>
+               <td> <a asp-action="DeleteProduct" asp-route-id="@item.Id"><i style="color: red;" class="fa fa-trash "></i></a> </td>
+        </tr>
+        i++;
+        }
+    </tbody>
+  </table>
+
+   </div>
+    <div>
+            <nav aria-label="Suppliers navigation example">
+                <vc:pager paging-list="@Model" />
+            </nav>
+                       </div>
+</div>
+
+ </div>
+</div>

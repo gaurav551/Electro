@@ -1,0 +1,83 @@
+@model Product
+<link rel="stylesheet" href="/lib/css/newproduct.css">
+<style>
+   img {
+    border-radius: 8px;
+    height:50px;
+    width:50px;
+	padding-top: 4px;
+}
+</style>
+<div>
+    <div >
+       <div class="page-wrapper bg-dark p-b-50">
+<div class="wrapper wrapper--w900">
+<div class="card card-6">
+<div class="card-heading">
+<h2 class="title">Add New Product</h2>
+</div>
+<div class="card-body">
+<form asp-controller="Product" asp-action="Edit"  method="POST" enctype="multipart/form-data" autocomplete="off">
+<div class="form-row">
+<div class="name">Product Name</div>
+<div class="value">
+	<input type="hidden" asp-for="Id">
+<input class="input--style-6" required type="text" asp-for="Name" placeholder="Name">
+</div>
+</div>
+<div class="form-row">
+<div class="name">Category</div>
+<div class="value">
+<div class="">
+	<select  asp-for="Category" required class="form-control" title="Select Category">
+		<option>Laptop</option>
+		
+		<option>Accessories</option>
+		<option>CCTV</option>
+
+	</select>
+
+</div>
+</div>
+</div>
+<div class="form-row">
+<div class="name">Description</div>
+<div class="value">
+<div class="">
+<textarea class="textarea--style-6" required asp-for="Description" placeholder="Product Description"></textarea>
+
+</div>
+</div>
+</div>
+<div class="form-row">
+<div class="name">Price</div>
+<div class="value">
+<input class="input--style-6" min="200" type="number" asp-for="Price" placeholder="2000" required>
+
+</div>
+</div>
+<div class="form-row">
+<div class="name">Items in Stock</div>
+<div class="value">
+<input class="input--style-6" type="number" asp-for="InStock" placeholder="5" required>
+</div>
+</div>
+
+
+
+
+<div class="card-footer">
+<input  class="btn btn--radius-2 btn--blue-2" type="submit" value="Update">
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

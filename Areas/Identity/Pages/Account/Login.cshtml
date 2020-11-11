@@ -1,0 +1,55 @@
+﻿@page
+@model Login
+@{
+    Layout = null;
+}
+<link type="text/css" rel="stylesheet" href="/electro/css/bootstrap.min.css"/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ <div class="col-xs-12 col-md-6 col-md-offset-3 ">
+<div class="panel panel-success">
+
+        <div class="panel-body">
+    <form id="account" method="POST" autocomplete="off">
+         @if (ViewData.ModelState.Any(x=>x.Value.Errors.Any()))
+              {
+                  <div class="alert alert-danger alert error">
+                      <a class="close" data-dismiss="alert">&times</a>
+                    @foreach (var modelError in Html.ViewData.ModelState.SelectMany(x=>x.Value.Errors))
+                    {
+                        <p>@modelError.ErrorMessage</p>
+                    }
+                  </div>
+              }
+  <h4>ADMIN</h4>
+  <label asp-for="Input.Email" class="sr-only">Email address</label>
+  <input asp-for="Input.Email" class="form-control" placeholder="Email address" required autofocus>
+  <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+    
+  <br>
+  <label asp-for="Input.Password" class="sr-only">Password</label>
+  <input type="password"asp-for="Input.Password" class="form-control" placeholder="Password" required>
+  <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+  <div class="checkbox mb-3">
+
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+        </div>
+</div>
+ </div>
+
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
